@@ -7,16 +7,18 @@ import org.bukkit.World;
 public class LocationUtils {
 
     public static String getString(Location loc) {
-        return loc.getX() + ';' +
-                loc.getY() + ';' +
-                loc.getZ() + ';' +
-                loc.getWorld().getName() + ';' +
-                loc.getYaw() + ';' +
-                loc.getPitch();
+        StringBuilder builder = new StringBuilder();
+        builder.append(loc.getX()).append(':');
+        builder.append(loc.getY()).append(':');
+        builder.append(loc.getZ()).append(':');
+        builder.append(loc.getWorld().getName()).append(':');
+        builder.append(loc.getYaw()).append(':');
+        builder.append(loc.getPitch());
+        return builder.toString();
     }
 
     public static Location getLocation(String s) {
-        String[] data = s.split(";");
+        String[] data = s.split(":");
         double x = Double.parseDouble(data[0]);
         double y = Double.parseDouble(data[1]);
         double z = Double.parseDouble(data[2]);
