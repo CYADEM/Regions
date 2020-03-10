@@ -5,9 +5,7 @@ import dev.tinchx.regions.config.Config;
 import dev.tinchx.regions.region.Region;
 import dev.tinchx.regions.utilities.ColorText;
 import dev.tinchx.regions.utilities.command.RootArgument;
-import dev.tinchx.regions.utilities.location.LocationUtils;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
 
 public final class RegionListArgument extends RootArgument {
 
@@ -24,9 +22,6 @@ public final class RegionListArgument extends RootArgument {
 
     @Override
     public void execute(CommandSender sender, String label, String[] args) {
-        if (sender instanceof Player) {
-            sender.sendMessage(LocationUtils.getString(((Player) sender).getLocation()));
-        }
         if (Region.getRegions().isEmpty()) {
             sender.sendMessage(ColorText.translate(lang.getString("LANG.REGION-EMPTY-LIST")));
         } else {
