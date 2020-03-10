@@ -52,6 +52,9 @@ public final class RegionListener implements Listener {
                 event.setTo(from);
                 return;
             }
+        }
+
+        if (region != null && region != pastRegion) {
             if (!new PlayerRegionEnterEvent(player, region).call()) {
                 event.setTo(from);
             }
